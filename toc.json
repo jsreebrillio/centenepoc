@@ -8,6 +8,16 @@
       "type": "item",
       "title": "FHIR - Provider Directory (Sandbox)",
       "uri": "/a0b44c61-5e1c-4e2c-8ed5-036eb8e0def9.json"
+    },
+    {
+      "type": "item",
+      "title": "FHIR - Patient Access (Sandbox)",
+      "uri": "/FHIR-PatientAccess(Sandbox).json"
+    },
+    {
+      "type": "item",
+      "title": "FHIR - Provider Directory (Sandbox)",
+      "uri": "/of8r4u-centene-test.json"
     }
   ]
 }
