@@ -6,6 +6,11 @@
     },
     {
       "type": "item",
+      "title": "Test",
+      "uri": "/docs/api/test.md"
+    },
+    {
+      "type": "item",
       "title": "testing",
       "uri": "/docs/api/testing.md"
     },
