@@ -2,6 +2,15 @@
   "items": [
     {
       "type": "divider",
+      "title": "api"
+    },
+    {
+      "type": "item",
+      "title": "testing",
+      "uri": "/docs/api/testing.md"
+    },
+    {
+      "type": "divider",
       "title": "APIS"
     },
     {
@@ -18,6 +27,21 @@
       "type": "item",
       "title": "FHIR - Provider Directory (Sandbox)",
       "uri": "/of8r4u-centene-test.json"
+    },
+    {
+      "type": "item",
+      "title": "Swagger Petstore",
+      "uri": "/02gki2-centene-test.json"
+    },
+    {
+      "type": "item",
+      "title": "Swagger Petstore",
+      "uri": "/orcydl.json"
+    },
+    {
+      "type": "item",
+      "title": "Swagger Petstore",
+      "uri": "/shkcs4-test-centene.json"
     }
   ]
 }
