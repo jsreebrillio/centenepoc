@@ -1,0 +1,2066 @@
+{
+  "openapi" : "3.0.1",
+  "info" : {
+    "title" : "FHIR - Provider Directory (Sandbox)",
+    "description" : "Provider directory endpoints for FHIR resources",
+    "version" : "4.0.1"
+  },
+  "servers" : [ {
+    "url" : "https://sandbox.api.centene.com/sandbox/fhir/providerdirectory"
+  } ],
+  "tags" : [ {
+    "name" : "HealthcareService"
+  }, {
+    "name" : "InsurancePlan"
+  }, {
+    "name" : "Location"
+  }, {
+    "name" : "Organization"
+  }, {
+    "name" : "OrganizationAffiliation"
+  }, {
+    "name" : "Practitioner"
+  }, {
+    "name" : "PractitionerRole"
+  } ],
+  "paths" : {
+    "/metadata" : {
+      "get" : {
+        "summary" : "Capability Statement",
+        "operationId" : "metadata",
+        "responses" : {
+          "200" : {
+            "description" : "Success"
+          }
+        }
+      }
+    },
+    "/OrganizationAffiliation/{id}" : {
+      "get" : {
+        "tags" : [ "OrganizationAffiliation" ],
+        "summary" : "Read the current state of the resource",
+        "operationId" : "readOrganizationAffiliation",
+        "parameters" : [ {
+          "name" : "id",
+          "in" : "path",
+          "required" : true,
+          "schema" : {
+            "type" : "string"
+          }
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "Success",
+            "content" : {
+              "*/*" : {
+                "schema" : {
+                  "required" : [ "active", "code", "healthcareService", "id", "language", "location", "meta", "network", "organization", "participatingOrganization", "resourceType", "text" ],
+                  "type" : "object",
+                  "properties" : {
+                    "code" : {
+                      "minItems" : 1,
+                      "uniqueItems" : true,
+                      "type" : "array",
+                      "items" : {
+                        "type" : "object",
+                        "properties" : {
+                          "coding" : {
+                            "minItems" : 1,
+                            "uniqueItems" : true,
+                            "type" : "array",
+                            "items" : {
+                              "required" : [ "code", "system" ],
+                              "type" : "object",
+                              "properties" : {
+                                "code" : {
+                                  "minLength" : 1,
+                                  "type" : "string"
+                                },
+                                "system" : {
+                                  "minLength" : 1,
+                                  "type" : "string"
+                                }
+                              }
+                            }
+                          }
+                        }
+                      }
+                    },
+                    "healthcareService" : {
+                      "minItems" : 1,
+                      "uniqueItems" : true,
+                      "type" : "array",
+                      "items" : {
+                        "required" : [ "reference" ],
+                        "type" : "object",
+                        "properties" : {
+                          "reference" : {
+                            "minLength" : 1,
+                            "type" : "string"
+                          }
+                        }
+                      }
+                    },
+                    "meta" : {
+                      "required" : [ "lastUpdated", "profile" ],
+                      "type" : "object",
+                      "properties" : {
+                        "lastUpdated" : {
+                          "minLength" : 1,
+                          "type" : "string"
+                        },
+                        "profile" : {
+                          "type" : "array",
+                          "items" : {
+                            "type" : "object",
+                            "properties" : { }
+                          }
+                        }
+                      }
+                    },
+                    "organization" : {
+                      "required" : [ "reference" ],
+                      "type" : "object",
+                      "properties" : {
+                        "reference" : {
+                          "minLength" : 1,
+                          "type" : "string"
+                        }
+                      }
+                    },
+                    "participatingOrganization" : {
+                      "required" : [ "reference" ],
+                      "type" : "object",
+                      "properties" : {
+                        "reference" : {
+                          "minLength" : 1,
+                          "type" : "string"
+                        }
+                      }
+                    },
+                    "active" : {
+                      "type" : "boolean"
+                    },
+                    "location" : {
+                      "minItems" : 1,
+                      "uniqueItems" : true,
+                      "type" : "array",
+                      "items" : {
+                        "required" : [ "reference" ],
+                        "type" : "object",
+                        "properties" : {
+                          "reference" : {
+                            "minLength" : 1,
+                            "type" : "string"
+                          }
+                        }
+                      }
+                    },
+                    "language" : {
+                      "minLength" : 1,
+                      "type" : "string"
+                    },
+                    "text" : {
+                      "required" : [ "div", "status" ],
+                      "type" : "object",
+                      "properties" : {
+                        "div" : {
+                          "minLength" : 1,
+                          "type" : "string"
+                        },
+                        "status" : {
+                          "minLength" : 1,
+                          "type" : "string"
+                        }
+                      }
+                    },
+                    "id" : {
+                      "minLength" : 1,
+                      "type" : "string"
+                    },
+                    "network" : {
+                      "minItems" : 1,
+                      "uniqueItems" : true,
+                      "type" : "array",
+                      "items" : {
+                        "required" : [ "reference" ],
+                        "type" : "object",
+                        "properties" : {
+                          "reference" : {
+                            "minLength" : 1,
+                            "type" : "string"
+                          }
+                        }
+                      }
+                    },
+                    "resourceType" : {
+                      "minLength" : 1,
+                      "type" : "string"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/InsurancePlan/{id}" : {
+      "get" : {
+        "tags" : [ "InsurancePlan" ],
+        "summary" : "Read the current state of the resource",
+        "operationId" : "readInsurancePlan",
+        "parameters" : [ {
+          "name" : "id",
+          "in" : "path",
+          "required" : true,
+          "schema" : {
+            "type" : "string"
+          }
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "Success",
+            "content" : {
+              "*/*" : {
+                "schema" : {
+                  "required" : [ "administeredBy", "coverageArea", "id", "language", "meta", "name", "network", "ownedBy", "plan", "resourceType", "status", "text", "type" ],
+                  "type" : "object",
+                  "properties" : {
+                    "meta" : {
+                      "required" : [ "lastUpdated", "profile" ],
+                      "type" : "object",
+                      "properties" : {
+                        "lastUpdated" : {
+                          "minLength" : 1,
+                          "type" : "string"
+                        },
+                        "profile" : {
+                          "type" : "array",
+                          "items" : {
+                            "type" : "object",
+                            "properties" : { }
+                          }
+                        }
+                      }
+                    },
+                    "name" : {
+                      "minLength" : 1,
+                      "type" : "string"
+                    },
+                    "language" : {
+                      "minLength" : 1,
+                      "type" : "string"
+                    },
+                    "text" : {
+                      "required" : [ "div", "status" ],
+                      "type" : "object",
+                      "properties" : {
+                        "div" : {
+                          "minLength" : 1,
+                          "type" : "string"
+                        },
+                        "status" : {
+                          "minLength" : 1,
+                          "type" : "string"
+                        }
+                      }
+                    },
+                    "id" : {
+                      "minLength" : 1,
+                      "type" : "string"
+                    },
+                    "administeredBy" : {
+                      "required" : [ "reference" ],
+                      "type" : "object",
+                      "properties" : {
+                        "reference" : {
+                          "minLength" : 1,
+                          "type" : "string"
+                        }
+                      }
+                    },
+                    "type" : {
+                      "minItems" : 1,
+                      "uniqueItems" : true,
+                      "type" : "array",
+                      "items" : {
+                        "type" : "object",
+                        "properties" : {
+                          "coding" : {
+                            "minItems" : 1,
+                            "uniqueItems" : true,
+                            "type" : "array",
+                            "items" : {
+                              "required" : [ "code", "display", "system" ],
+                              "type" : "object",
+                              "properties" : {
+                                "code" : {
+                                  "minLength" : 1,
+                                  "type" : "string"
+                                },
+                                "system" : {
+                                  "minLength" : 1,
+                                  "type" : "string"
+                                },
+                                "display" : {
+                                  "minLength" : 1,
+                                  "type" : "string"
+                                }
+                              }
+                            }
+                          }
+                        }
+                      }
+                    },
+                    "plan" : {
+                      "minItems" : 1,
+                      "uniqueItems" : true,
+                      "type" : "array",
+                      "items" : {
+                        "type" : "object",
+                        "properties" : {
+                          "type" : {
+                            "required" : [ "coding" ],
+                            "type" : "object",
+                            "properties" : {
+                              "coding" : {
+                                "minItems" : 1,
+                                "uniqueItems" : true,
+                                "type" : "array",
+                                "items" : {
+                                  "required" : [ "code", "display", "system" ],
+                                  "type" : "object",
+                                  "properties" : {
+                                    "code" : {
+                                      "minLength" : 1,
+                                      "type" : "string"
+                                    },
+                                    "system" : {
+                                      "minLength" : 1,
+                                      "type" : "string"
+                                    },
+                                    "display" : {
+                                      "minLength" : 1,
+                                      "type" : "string"
+                                    }
+                                  }
+                                }
+                              }
+                            }
+                          }
+                        }
+                      }
+                    },
+                    "ownedBy" : {
+                      "required" : [ "reference" ],
+                      "type" : "object",
+                      "properties" : {
+                        "reference" : {
+                          "minLength" : 1,
+                          "type" : "string"
+                        }
+                      }
+                    },
+                    "network" : {
+                      "minItems" : 1,
+                      "uniqueItems" : true,
+                      "type" : "array",
+                      "items" : {
+                        "required" : [ "reference" ],
+                        "type" : "object",
+                        "properties" : {
+                          "reference" : {
+                            "minLength" : 1,
+                            "type" : "string"
+                          }
+                        }
+                      }
+                    },
+                    "coverageArea" : {
+                      "minItems" : 1,
+                      "uniqueItems" : true,
+                      "type" : "array",
+                      "items" : {
+                        "required" : [ "reference" ],
+                        "type" : "object",
+                        "properties" : {
+                          "reference" : {
+                            "minLength" : 1,
+                            "type" : "string"
+                          }
+                        }
+                      }
+                    },
+                    "status" : {
+                      "minLength" : 1,
+                      "type" : "string"
+                    },
+                    "resourceType" : {
+                      "minLength" : 1,
+                      "type" : "string"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/InsurancePlan" : {
+      "get" : {
+        "tags" : [ "InsurancePlan" ],
+        "summary" : "Search all resources of type InsurancePlan based on a set of criteria",
+        "operationId" : "searchInsurancePlan",
+        "parameters" : [ {
+          "name" : "administered-by",
+          "in" : "query",
+          "description" : "Product administrator",
+          "required" : false,
+          "schema" : {
+            "type" : "string"
+          }
+        }, {
+          "name" : "coverage-area",
+          "in" : "query",
+          "required" : false,
+          "schema" : {
+            "type" : "string"
+          }
+        }, {
+          "name" : "identifier",
+          "in" : "query",
+          "description" : "Any identifier for the organization (not the accreditation issuer's identifier)",
+          "required" : false,
+          "schema" : {
+            "type" : "string"
+          }
+        }, {
+          "name" : "_lastUpdated",
+          "in" : "query",
+          "required" : false,
+          "schema" : {
+            "type" : "string",
+            "format" : "date"
+          }
+        }, {
+          "name" : "name",
+          "in" : "query",
+          "description" : "A portion of the organization's name or alias",
+          "required" : false,
+          "schema" : {
+            "type" : "string"
+          }
+        }, {
+          "name" : "owned-by",
+          "in" : "query",
+          "description" : "An organization of which this organization forms a part",
+          "required" : false,
+          "schema" : {
+            "type" : "string"
+          }
+        }, {
+          "name" : "plan-type",
+          "in" : "query",
+          "required" : false,
+          "schema" : {
+            "type" : "string"
+          }
+        }, {
+          "name" : "type",
+          "in" : "query",
+          "description" : "A code for the type of organization",
+          "required" : false,
+          "schema" : {
+            "type" : "string"
+          }
+        }, {
+          "name" : "_id",
+          "in" : "query",
+          "description" : "The ID of the resource",
+          "required" : false,
+          "schema" : {
+            "type" : "string"
+          }
+        }, {
+          "name" : "_include",
+          "in" : "query",
+          "required" : false,
+          "schema" : {
+            "type" : "string"
+          }
+        }, {
+          "name" : "_source",
+          "in" : "query",
+          "required" : false,
+          "schema" : {
+            "type" : "string"
+          }
+        }, {
+          "name" : "_next",
+          "in" : "query",
+          "required" : false,
+          "schema" : {
+            "type" : "string"
+          }
+        }, {
+          "name" : "_page",
+          "in" : "query",
+          "required" : false,
+          "schema" : {
+            "type" : "number"
+          }
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "Success",
+            "content" : {
+              "*/*" : {
+                "schema" : {
+                  "required" : [ "entry", "id", "link", "meta", "resourceType", "total", "type" ],
+                  "type" : "object",
+                  "properties" : {
+                    "entry" : {
+                      "minItems" : 1,
+                      "uniqueItems" : true,
+                      "type" : "array",
+                      "items" : {
+                        "required" : [ "fullUrl" ],
+                        "type" : "object",
+                        "properties" : {
+                          "resource" : {
+                            "required" : [ "administeredBy", "coverageArea", "id", "language", "meta", "name", "network", "ownedBy", "plan", "resourceType", "status", "text", "type" ],
+                            "type" : "object",
+                            "properties" : {
+                              "meta" : {
+                                "required" : [ "lastUpdated", "profile" ],
+                                "type" : "object",
+                                "properties" : {
+                                  "lastUpdated" : {
+                                    "minLength" : 1,
+                                    "type" : "string"
+                                  },
+                                  "profile" : {
+                                    "type" : "array",
+                                    "items" : {
+                                      "type" : "object",
+                                      "properties" : { }
+                                    }
+                                  }
+                                }
+                              },
+                              "name" : {
+                                "minLength" : 1,
+                                "type" : "string"
+                              },
+                              "language" : {
+                                "minLength" : 1,
+                                "type" : "string"
+                              },
+                              "text" : {
+                                "required" : [ "div", "status" ],
+                                "type" : "object",
+                                "properties" : {
+                                  "div" : {
+                                    "minLength" : 1,
+                                    "type" : "string"
+                                  },
+                                  "status" : {
+                                    "minLength" : 1,
+                                    "type" : "string"
+                                  }
+                                }
+                              },
+                              "id" : {
+                                "minLength" : 1,
+                                "type" : "string"
+                              },
+                              "administeredBy" : {
+                                "required" : [ "reference" ],
+                                "type" : "object",
+                                "properties" : {
+                                  "reference" : {
+                                    "minLength" : 1,
+                                    "type" : "string"
+                                  }
+                                }
+                              },
+                              "type" : {
+                                "minItems" : 1,
+                                "uniqueItems" : true,
+                                "type" : "array",
+                                "items" : {
+                                  "type" : "object",
+                                  "properties" : {
+                                    "coding" : {
+                                      "minItems" : 1,
+                                      "uniqueItems" : true,
+                                      "type" : "array",
+                                      "items" : {
+                                        "required" : [ "code", "display", "system" ],
+                                        "type" : "object",
+                                        "properties" : {
+                                          "code" : {
+                                            "minLength" : 1,
+                                            "type" : "string"
+                                          },
+                                          "system" : {
+                                            "minLength" : 1,
+                                            "type" : "string"
+                                          },
+                                          "display" : {
+                                            "minLength" : 1,
+                                            "type" : "string"
+                                          }
+                                        }
+                                      }
+                                    }
+                                  }
+                                }
+                              },
+                              "plan" : {
+                                "minItems" : 1,
+                                "uniqueItems" : true,
+                                "type" : "array",
+                                "items" : {
+                                  "type" : "object",
+                                  "properties" : {
+                                    "type" : {
+                                      "required" : [ "coding" ],
+                                      "type" : "object",
+                                      "properties" : {
+                                        "coding" : {
+                                          "minItems" : 1,
+                                          "uniqueItems" : true,
+                                          "type" : "array",
+                                          "items" : {
+                                            "required" : [ "code", "display", "system" ],
+                                            "type" : "object",
+                                            "properties" : {
+                                              "code" : {
+                                                "minLength" : 1,
+                                                "type" : "string"
+                                              },
+                                              "system" : {
+                                                "minLength" : 1,
+                                                "type" : "string"
+                                              },
+                                              "display" : {
+                                                "minLength" : 1,
+                                                "type" : "string"
+                                              }
+                                            }
+                                          }
+                                        }
+                                      }
+                                    }
+                                  }
+                                }
+                              },
+                              "ownedBy" : {
+                                "required" : [ "reference" ],
+                                "type" : "object",
+                                "properties" : {
+                                  "reference" : {
+                                    "minLength" : 1,
+                                    "type" : "string"
+                                  }
+                                }
+                              },
+                              "network" : {
+                                "minItems" : 1,
+                                "uniqueItems" : true,
+                                "type" : "array",
+                                "items" : {
+                                  "required" : [ "reference" ],
+                                  "type" : "object",
+                                  "properties" : {
+                                    "reference" : {
+                                      "minLength" : 1,
+                                      "type" : "string"
+                                    }
+                                  }
+                                }
+                              },
+                              "coverageArea" : {
+                                "minItems" : 1,
+                                "uniqueItems" : true,
+                                "type" : "array",
+                                "items" : {
+                                  "required" : [ "reference" ],
+                                  "type" : "object",
+                                  "properties" : {
+                                    "reference" : {
+                                      "minLength" : 1,
+                                      "type" : "string"
+                                    }
+                                  }
+                                }
+                              },
+                              "status" : {
+                                "minLength" : 1,
+                                "type" : "string"
+                              },
+                              "resourceType" : {
+                                "minLength" : 1,
+                                "type" : "string"
+                              }
+                            }
+                          },
+                          "fullUrl" : {
+                            "minLength" : 1,
+                            "type" : "string"
+                          }
+                        }
+                      }
+                    },
+                    "total" : {
+                      "type" : "number"
+                    },
+                    "meta" : {
+                      "required" : [ "lastUpdated" ],
+                      "type" : "object",
+                      "properties" : {
+                        "lastUpdated" : {
+                          "minLength" : 1,
+                          "type" : "string"
+                        }
+                      }
+                    },
+                    "link" : {
+                      "minItems" : 1,
+                      "uniqueItems" : true,
+                      "type" : "array",
+                      "items" : {
+                        "required" : [ "relation", "url" ],
+                        "type" : "object",
+                        "properties" : {
+                          "url" : {
+                            "minLength" : 1,
+                            "type" : "string"
+                          },
+                          "relation" : {
+                            "minLength" : 1,
+                            "type" : "string"
+                          }
+                        }
+                      }
+                    },
+                    "id" : {
+                      "minLength" : 1,
+                      "type" : "string"
+                    },
+                    "type" : {
+                      "minLength" : 1,
+                      "type" : "string"
+                    },
+                    "resourceType" : {
+                      "minLength" : 1,
+                      "type" : "string"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/Location" : {
+      "get" : {
+        "tags" : [ "Location" ],
+        "summary" : "Search all resources of type Location based on a set of criteria",
+        "operationId" : "searchLocation",
+        "parameters" : [ {
+          "name" : "address",
+          "in" : "query",
+          "description" : "A (part of the) address of the location",
+          "required" : false,
+          "schema" : {
+            "type" : "string"
+          }
+        }, {
+          "name" : "address-city",
+          "in" : "query",
+          "description" : "A city specified in an address",
+          "required" : false,
+          "schema" : {
+            "type" : "string"
+          }
+        }, {
+          "name" : "address-postalcode",
+          "in" : "query",
+          "description" : "A postal code specified in an address",
+          "required" : false,
+          "schema" : {
+            "type" : "string"
+          }
+        }, {
+          "name" : "address-state",
+          "in" : "query",
+          "description" : "A state specified in an address",
+          "required" : false,
+          "schema" : {
+            "type" : "string"
+          }
+        }, {
+          "name" : "_id",
+          "in" : "query",
+          "description" : "The ID of the resource",
+          "required" : false,
+          "schema" : {
+            "type" : "string"
+          }
+        }, {
+          "name" : "organization",
+          "in" : "query",
+          "description" : "Searches for locations that are managed by the provided organization",
+          "required" : false,
+          "schema" : {
+            "type" : "string"
+          }
+        }, {
+          "name" : "partof",
+          "in" : "query",
+          "description" : "A location of which this location is a part",
+          "required" : false,
+          "schema" : {
+            "type" : "string"
+          }
+        }, {
+          "name" : "type",
+          "in" : "query",
+          "description" : "A code for the type of location",
+          "required" : false,
+          "schema" : {
+            "type" : "string"
+          }
+        }, {
+          "name" : "_lastUpdated",
+          "in" : "query",
+          "required" : false,
+          "schema" : {
+            "type" : "string",
+            "format" : "date"
+          }
+        }, {
+          "name" : "_include",
+          "in" : "query",
+          "required" : false,
+          "schema" : {
+            "type" : "string"
+          }
+        }, {
+          "name" : "_revinclude",
+          "in" : "query",
+          "required" : false,
+          "schema" : {
+            "type" : "string"
+          }
+        }, {
+          "name" : "_source",
+          "in" : "query",
+          "required" : false,
+          "schema" : {
+            "type" : "string"
+          }
+        }, {
+          "name" : "_next",
+          "in" : "query",
+          "required" : false,
+          "schema" : {
+            "type" : "string"
+          }
+        }, {
+          "name" : "_page",
+          "in" : "query",
+          "required" : false,
+          "schema" : {
+            "type" : "number"
+          }
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "Success",
+            "content" : {
+              "*/*" : {
+                "schema" : {
+                  "required" : [ "entry", "id", "link", "meta", "resourceType", "total", "type" ],
+                  "type" : "object",
+                  "properties" : {
+                    "entry" : {
+                      "minItems" : 1,
+                      "uniqueItems" : true,
+                      "type" : "array",
+                      "items" : {
+                        "required" : [ "fullUrl" ],
+                        "type" : "object",
+                        "properties" : {
+                          "resource" : {
+                            "required" : [ "address", "extension", "hoursOfOperation", "id", "language", "managingOrganization", "meta", "name", "position", "resourceType", "status", "telecom", "text", "type" ],
+                            "type" : "object",
+                            "properties" : {
+                              "extension" : {
+                                "minItems" : 1,
+                                "uniqueItems" : true,
+                                "type" : "array",
+                                "items" : {
+                                  "required" : [ "url" ],
+                                  "type" : "object",
+                                  "properties" : {
+                                    "valueCodeableConcept" : {
+                                      "required" : [ "coding" ],
+                                      "type" : "object",
+                                      "properties" : {
+                                        "coding" : {
+                                          "minItems" : 1,
+                                          "uniqueItems" : true,
+                                          "type" : "array",
+                                          "items" : {
+                                            "required" : [ "code", "system" ],
+                                            "type" : "object",
+                                            "properties" : {
+                                              "code" : {
+                                                "minLength" : 1,
+                                                "type" : "string"
+                                              },
+                                              "system" : {
+                                                "minLength" : 1,
+                                                "type" : "string"
+                                              }
+                                            }
+                                          }
+                                        }
+                                      }
+                                    },
+                                    "url" : {
+                                      "minLength" : 1,
+                                      "type" : "string"
+                                    }
+                                  }
+                                }
+                              },
+                              "address" : {
+                                "required" : [ "city", "line", "postalCode", "state" ],
+                                "type" : "object",
+                                "properties" : {
+                                  "city" : {
+                                    "minLength" : 1,
+                                    "type" : "string"
+                                  },
+                                  "line" : {
+                                    "type" : "array",
+                                    "items" : {
+                                      "type" : "object",
+                                      "properties" : { }
+                                    }
+                                  },
+                                  "postalCode" : {
+                                    "minLength" : 1,
+                                    "type" : "string"
+                                  },
+                                  "state" : {
+                                    "minLength" : 1,
+                                    "type" : "string"
+                                  }
+                                }
+                              },
+                              "hoursOfOperation" : {
+                                "minItems" : 1,
+                                "uniqueItems" : true,
+                                "type" : "array",
+                                "items" : {
+                                  "type" : "object",
+                                  "properties" : {
+                                    "daysOfWeek" : {
+                                      "type" : "array",
+                                      "items" : {
+                                        "type" : "object",
+                                        "properties" : { }
+                                      }
+                                    }
+                                  }
+                                }
+                              },
+                              "language" : {
+                                "minLength" : 1,
+                                "type" : "string"
+                              },
+                              "type" : {
+                                "minItems" : 1,
+                                "uniqueItems" : true,
+                                "type" : "array",
+                                "items" : {
+                                  "type" : "object",
+                                  "properties" : {
+                                    "coding" : {
+                                      "minItems" : 1,
+                                      "uniqueItems" : true,
+                                      "type" : "array",
+                                      "items" : {
+                                        "required" : [ "code", "system" ],
+                                        "type" : "object",
+                                        "properties" : {
+                                          "code" : {
+                                            "minLength" : 1,
+                                            "type" : "string"
+                                          },
+                                          "system" : {
+                                            "minLength" : 1,
+                                            "type" : "string"
+                                          }
+                                        }
+                                      }
+                                    }
+                                  }
+                                }
+                              },
+                              "managingOrganization" : {
+                                "required" : [ "reference" ],
+                                "type" : "object",
+                                "properties" : {
+                                  "reference" : {
+                                    "minLength" : 1,
+                                    "type" : "string"
+                                  }
+                                }
+                              },
+                              "meta" : {
+                                "required" : [ "lastUpdated", "profile" ],
+                                "type" : "object",
+                                "properties" : {
+                                  "lastUpdated" : {
+                                    "minLength" : 1,
+                                    "type" : "string"
+                                  },
+                                  "profile" : {
+                                    "type" : "array",
+                                    "items" : {
+                                      "type" : "object",
+                                      "properties" : { }
+                                    }
+                                  }
+                                }
+                              },
+                              "name" : {
+                                "minLength" : 1,
+                                "type" : "string"
+                              },
+                              "telecom" : {
+                                "minItems" : 1,
+                                "uniqueItems" : true,
+                                "type" : "array",
+                                "items" : {
+                                  "required" : [ "rank", "system", "value" ],
+                                  "type" : "object",
+                                  "properties" : {
+                                    "extension" : {
+                                      "minItems" : 1,
+                                      "uniqueItems" : true,
+                                      "type" : "array",
+                                      "items" : {
+                                        "required" : [ "url" ],
+                                        "type" : "object",
+                                        "properties" : {
+                                          "extension" : {
+                                            "minItems" : 1,
+                                            "uniqueItems" : true,
+                                            "type" : "array",
+                                            "items" : {
+                                              "required" : [ "url", "valueCode" ],
+                                              "type" : "object",
+                                              "properties" : {
+                                                "valueCode" : {
+                                                  "minLength" : 1,
+                                                  "type" : "string"
+                                                },
+                                                "url" : {
+                                                  "minLength" : 1,
+                                                  "type" : "string"
+                                                }
+                                              }
+                                            }
+                                          },
+                                          "url" : {
+                                            "minLength" : 1,
+                                            "type" : "string"
+                                          }
+                                        }
+                                      }
+                                    },
+                                    "system" : {
+                                      "minLength" : 1,
+                                      "type" : "string"
+                                    },
+                                    "rank" : {
+                                      "type" : "number"
+                                    },
+                                    "value" : {
+                                      "minLength" : 1,
+                                      "type" : "string"
+                                    }
+                                  }
+                                }
+                              },
+                              "position" : {
+                                "required" : [ "latitude", "longitude" ],
+                                "type" : "object",
+                                "properties" : {
+                                  "latitude" : {
+                                    "type" : "number"
+                                  },
+                                  "longitude" : {
+                                    "type" : "number"
+                                  }
+                                }
+                              },
+                              "text" : {
+                                "required" : [ "div", "status" ],
+                                "type" : "object",
+                                "properties" : {
+                                  "div" : {
+                                    "minLength" : 1,
+                                    "type" : "string"
+                                  },
+                                  "status" : {
+                                    "minLength" : 1,
+                                    "type" : "string"
+                                  }
+                                }
+                              },
+                              "id" : {
+                                "minLength" : 1,
+                                "type" : "string"
+                              },
+                              "status" : {
+                                "minLength" : 1,
+                                "type" : "string"
+                              },
+                              "resourceType" : {
+                                "minLength" : 1,
+                                "type" : "string"
+                              }
+                            }
+                          },
+                          "fullUrl" : {
+                            "minLength" : 1,
+                            "type" : "string"
+                          }
+                        }
+                      }
+                    },
+                    "total" : {
+                      "type" : "number"
+                    },
+                    "meta" : {
+                      "required" : [ "lastUpdated" ],
+                      "type" : "object",
+                      "properties" : {
+                        "lastUpdated" : {
+                          "minLength" : 1,
+                          "type" : "string"
+                        }
+                      }
+                    },
+                    "link" : {
+                      "minItems" : 1,
+                      "uniqueItems" : true,
+                      "type" : "array",
+                      "items" : {
+                        "required" : [ "relation", "url" ],
+                        "type" : "object",
+                        "properties" : {
+                          "url" : {
+                            "minLength" : 1,
+                            "type" : "string"
+                          },
+                          "relation" : {
+                            "minLength" : 1,
+                            "type" : "string"
+                          }
+                        }
+                      }
+                    },
+                    "id" : {
+                      "minLength" : 1,
+                      "type" : "string"
+                    },
+                    "type" : {
+                      "minLength" : 1,
+                      "type" : "string"
+                    },
+                    "resourceType" : {
+                      "minLength" : 1,
+                      "type" : "string"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/HealthcareService/{id}" : {
+      "get" : {
+        "tags" : [ "HealthcareService" ],
+        "summary" : "Read the current state of the resource",
+        "operationId" : "readHealthcareService",
+        "parameters" : [ {
+          "name" : "id",
+          "in" : "path",
+          "required" : true,
+          "schema" : {
+            "type" : "string"
+          }
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "Success",
+            "content" : {
+              "*/*" : {
+                "schema" : {
+                  "required" : [ "active", "category", "extension", "id", "language", "location", "meta", "providedBy", "resourceType", "specialty", "text" ],
+                  "type" : "object",
+                  "properties" : {
+                    "providedBy" : {
+                      "required" : [ "reference" ],
+                      "type" : "object",
+                      "properties" : {
+                        "reference" : {
+                          "minLength" : 1,
+                          "type" : "string"
+                        }
+                      }
+                    },
+                    "specialty" : {
+                      "minItems" : 1,
+                      "uniqueItems" : true,
+                      "type" : "array",
+                      "items" : {
+                        "type" : "object",
+                        "properties" : {
+                          "coding" : {
+                            "minItems" : 1,
+                            "uniqueItems" : true,
+                            "type" : "array",
+                            "items" : {
+                              "required" : [ "code", "display", "system" ],
+                              "type" : "object",
+                              "properties" : {
+                                "code" : {
+                                  "minLength" : 1,
+                                  "type" : "string"
+                                },
+                                "system" : {
+                                  "minLength" : 1,
+                                  "type" : "string"
+                                },
+                                "display" : {
+                                  "minLength" : 1,
+                                  "type" : "string"
+                                }
+                              }
+                            }
+                          }
+                        }
+                      }
+                    },
+                    "extension" : {
+                      "minItems" : 1,
+                      "uniqueItems" : true,
+                      "type" : "array",
+                      "items" : {
+                        "required" : [ "url" ],
+                        "type" : "object",
+                        "properties" : {
+                          "extension" : {
+                            "minItems" : 1,
+                            "uniqueItems" : true,
+                            "type" : "array",
+                            "items" : {
+                              "required" : [ "url" ],
+                              "type" : "object",
+                              "properties" : {
+                                "valueCodeableConcept" : {
+                                  "required" : [ "coding" ],
+                                  "type" : "object",
+                                  "properties" : {
+                                    "coding" : {
+                                      "minItems" : 1,
+                                      "uniqueItems" : true,
+                                      "type" : "array",
+                                      "items" : {
+                                        "required" : [ "code", "system" ],
+                                        "type" : "object",
+                                        "properties" : {
+                                          "code" : {
+                                            "minLength" : 1,
+                                            "type" : "string"
+                                          },
+                                          "system" : {
+                                            "minLength" : 1,
+                                            "type" : "string"
+                                          }
+                                        }
+                                      }
+                                    }
+                                  }
+                                },
+                                "url" : {
+                                  "minLength" : 1,
+                                  "type" : "string"
+                                }
+                              }
+                            }
+                          },
+                          "url" : {
+                            "minLength" : 1,
+                            "type" : "string"
+                          }
+                        }
+                      }
+                    },
+                    "meta" : {
+                      "required" : [ "lastUpdated", "profile" ],
+                      "type" : "object",
+                      "properties" : {
+                        "lastUpdated" : {
+                          "minLength" : 1,
+                          "type" : "string"
+                        },
+                        "profile" : {
+                          "type" : "array",
+                          "items" : {
+                            "type" : "object",
+                            "properties" : { }
+                          }
+                        }
+                      }
+                    },
+                    "active" : {
+                      "type" : "boolean"
+                    },
+                    "location" : {
+                      "minItems" : 1,
+                      "uniqueItems" : true,
+                      "type" : "array",
+                      "items" : {
+                        "required" : [ "reference" ],
+                        "type" : "object",
+                        "properties" : {
+                          "reference" : {
+                            "minLength" : 1,
+                            "type" : "string"
+                          }
+                        }
+                      }
+                    },
+                    "language" : {
+                      "minLength" : 1,
+                      "type" : "string"
+                    },
+                    "text" : {
+                      "required" : [ "div", "status" ],
+                      "type" : "object",
+                      "properties" : {
+                        "div" : {
+                          "minLength" : 1,
+                          "type" : "string"
+                        },
+                        "status" : {
+                          "minLength" : 1,
+                          "type" : "string"
+                        }
+                      }
+                    },
+                    "id" : {
+                      "minLength" : 1,
+                      "type" : "string"
+                    },
+                    "category" : {
+                      "minItems" : 1,
+                      "uniqueItems" : true,
+                      "type" : "array",
+                      "items" : {
+                        "type" : "object",
+                        "properties" : {
+                          "coding" : {
+                            "minItems" : 1,
+                            "uniqueItems" : true,
+                            "type" : "array",
+                            "items" : {
+                              "required" : [ "code", "system" ],
+                              "type" : "object",
+                              "properties" : {
+                                "code" : {
+                                  "minLength" : 1,
+                                  "type" : "string"
+                                },
+                                "system" : {
+                                  "minLength" : 1,
+                                  "type" : "string"
+                                }
+                              }
+                            }
+                          }
+                        }
+                      }
+                    },
+                    "resourceType" : {
+                      "minLength" : 1,
+                      "type" : "string"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/PractitionerRole" : {
+      "get" : {
+        "tags" : [ "PractitionerRole" ],
+        "summary" : "Search all resources of type PractitionerRole based on a set of criteria",
+        "operationId" : "searchPractitionerRole",
+        "parameters" : [ {
+          "name" : "location",
+          "in" : "query",
+          "description" : "One of the locations at which this practitioner provides care",
+          "required" : false,
+          "schema" : {
+            "type" : "string"
+          }
+        }, {
+          "name" : "network",
+          "in" : "query",
+          "required" : false,
+          "schema" : {
+            "type" : "string"
+          }
+        }, {
+          "name" : "organization",
+          "in" : "query",
+          "description" : "The identity of the organization the practitioner represents / acts on behalf of",
+          "required" : false,
+          "schema" : {
+            "type" : "string"
+          }
+        }, {
+          "name" : "practitioner",
+          "in" : "query",
+          "description" : "Practitioner that is able to provide the defined services for the organization",
+          "required" : false,
+          "schema" : {
+            "type" : "string"
+          }
+        }, {
+          "name" : "_id",
+          "in" : "query",
+          "description" : "The ID of the resource",
+          "required" : false,
+          "schema" : {
+            "type" : "string"
+          }
+        }, {
+          "name" : "role",
+          "in" : "query",
+          "description" : "The practitioner can perform this role at for the organization",
+          "required" : false,
+          "schema" : {
+            "type" : "string"
+          }
+        }, {
+          "name" : "service",
+          "in" : "query",
+          "description" : "The list of healthcare services that this worker provides for this role's Organization/Location(s)",
+          "required" : false,
+          "schema" : {
+            "type" : "string"
+          }
+        }, {
+          "name" : "specialty",
+          "in" : "query",
+          "description" : "The practitioner has this specialty at an organization",
+          "required" : false,
+          "schema" : {
+            "type" : "string"
+          }
+        }, {
+          "name" : "_lastUpdated",
+          "in" : "query",
+          "required" : false,
+          "schema" : {
+            "type" : "string",
+            "format" : "date"
+          }
+        }, {
+          "name" : "_include",
+          "in" : "query",
+          "required" : false,
+          "schema" : {
+            "type" : "string"
+          }
+        }, {
+          "name" : "_source",
+          "in" : "query",
+          "required" : false,
+          "schema" : {
+            "type" : "string"
+          }
+        }, {
+          "name" : "_next",
+          "in" : "query",
+          "required" : false,
+          "schema" : {
+            "type" : "string"
+          }
+        }, {
+          "name" : "_page",
+          "in" : "query",
+          "required" : false,
+          "schema" : {
+            "type" : "number"
+          }
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "Success",
+            "content" : {
+              "*/*" : {
+                "schema" : {
+                  "required" : [ "entry", "id", "link", "meta", "resourceType", "total", "type" ],
+                  "type" : "object",
+                  "properties" : {
+                    "entry" : {
+                      "minItems" : 1,
+                      "uniqueItems" : true,
+                      "type" : "array",
+                      "items" : {
+                        "required" : [ "fullUrl" ],
+                        "type" : "object",
+                        "properties" : {
+                          "resource" : {
+                            "required" : [ "active", "code", "extension", "healthcareService", "id", "language", "location", "meta", "organization", "resourceType", "specialty", "text" ],
+                            "type" : "object",
+                            "properties" : {
+                              "specialty" : {
+                                "minItems" : 1,
+                                "uniqueItems" : true,
+                                "type" : "array",
+                                "items" : {
+                                  "type" : "object",
+                                  "properties" : {
+                                    "coding" : {
+                                      "minItems" : 1,
+                                      "uniqueItems" : true,
+                                      "type" : "array",
+                                      "items" : {
+                                        "required" : [ "code", "display", "system" ],
+                                        "type" : "object",
+                                        "properties" : {
+                                          "code" : {
+                                            "minLength" : 1,
+                                            "type" : "string"
+                                          },
+                                          "system" : {
+                                            "minLength" : 1,
+                                            "type" : "string"
+                                          },
+                                          "display" : {
+                                            "minLength" : 1,
+                                            "type" : "string"
+                                          }
+                                        }
+                                      }
+                                    }
+                                  }
+                                }
+                              },
+                              "extension" : {
+                                "minItems" : 1,
+                                "uniqueItems" : true,
+                                "type" : "array",
+                                "items" : {
+                                  "required" : [ "url" ],
+                                  "type" : "object",
+                                  "properties" : {
+                                    "valueReference" : {
+                                      "required" : [ "reference" ],
+                                      "type" : "object",
+                                      "properties" : {
+                                        "reference" : {
+                                          "minLength" : 1,
+                                          "type" : "string"
+                                        }
+                                      }
+                                    },
+                                    "url" : {
+                                      "minLength" : 1,
+                                      "type" : "string"
+                                    }
+                                  }
+                                }
+                              },
+                              "code" : {
+                                "minItems" : 1,
+                                "uniqueItems" : true,
+                                "type" : "array",
+                                "items" : {
+                                  "type" : "object",
+                                  "properties" : {
+                                    "coding" : {
+                                      "minItems" : 1,
+                                      "uniqueItems" : true,
+                                      "type" : "array",
+                                      "items" : {
+                                        "required" : [ "code", "system" ],
+                                        "type" : "object",
+                                        "properties" : {
+                                          "code" : {
+                                            "minLength" : 1,
+                                            "type" : "string"
+                                          },
+                                          "system" : {
+                                            "minLength" : 1,
+                                            "type" : "string"
+                                          }
+                                        }
+                                      }
+                                    }
+                                  }
+                                }
+                              },
+                              "healthcareService" : {
+                                "minItems" : 1,
+                                "uniqueItems" : true,
+                                "type" : "array",
+                                "items" : {
+                                  "required" : [ "reference" ],
+                                  "type" : "object",
+                                  "properties" : {
+                                    "reference" : {
+                                      "minLength" : 1,
+                                      "type" : "string"
+                                    }
+                                  }
+                                }
+                              },
+                              "meta" : {
+                                "required" : [ "lastUpdated", "profile" ],
+                                "type" : "object",
+                                "properties" : {
+                                  "lastUpdated" : {
+                                    "minLength" : 1,
+                                    "type" : "string"
+                                  },
+                                  "profile" : {
+                                    "type" : "array",
+                                    "items" : {
+                                      "type" : "object",
+                                      "properties" : { }
+                                    }
+                                  }
+                                }
+                              },
+                              "organization" : {
+                                "required" : [ "reference" ],
+                                "type" : "object",
+                                "properties" : {
+                                  "reference" : {
+                                    "minLength" : 1,
+                                    "type" : "string"
+                                  }
+                                }
+                              },
+                              "active" : {
+                                "type" : "boolean"
+                              },
+                              "location" : {
+                                "minItems" : 1,
+                                "uniqueItems" : true,
+                                "type" : "array",
+                                "items" : {
+                                  "required" : [ "reference" ],
+                                  "type" : "object",
+                                  "properties" : {
+                                    "reference" : {
+                                      "minLength" : 1,
+                                      "type" : "string"
+                                    }
+                                  }
+                                }
+                              },
+                              "language" : {
+                                "minLength" : 1,
+                                "type" : "string"
+                              },
+                              "text" : {
+                                "required" : [ "div", "status" ],
+                                "type" : "object",
+                                "properties" : {
+                                  "div" : {
+                                    "minLength" : 1,
+                                    "type" : "string"
+                                  },
+                                  "status" : {
+                                    "minLength" : 1,
+                                    "type" : "string"
+                                  }
+                                }
+                              },
+                              "id" : {
+                                "minLength" : 1,
+                                "type" : "string"
+                              },
+                              "resourceType" : {
+                                "minLength" : 1,
+                                "type" : "string"
+                              }
+                            }
+                          },
+                          "fullUrl" : {
+                            "minLength" : 1,
+                            "type" : "string"
+                          }
+                        }
+                      }
+                    },
+                    "total" : {
+                      "type" : "number"
+                    },
+                    "meta" : {
+                      "required" : [ "lastUpdated" ],
+                      "type" : "object",
+                      "properties" : {
+                        "lastUpdated" : {
+                          "minLength" : 1,
+                          "type" : "string"
+                        }
+                      }
+                    },
+                    "link" : {
+                      "minItems" : 1,
+                      "uniqueItems" : true,
+                      "type" : "array",
+                      "items" : {
+                        "required" : [ "relation", "url" ],
+                        "type" : "object",
+                        "properties" : {
+                          "url" : {
+                            "minLength" : 1,
+                            "type" : "string"
+                          },
+                          "relation" : {
+                            "minLength" : 1,
+                            "type" : "string"
+                          }
+                        }
+                      }
+                    },
+                    "id" : {
+                      "minLength" : 1,
+                      "type" : "string"
+                    },
+                    "type" : {
+                      "minLength" : 1,
+                      "type" : "string"
+                    },
+                    "resourceType" : {
+                      "minLength" : 1,
+                      "type" : "string"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/PractitionerRole/{id}" : {
+      "get" : {
+        "tags" : [ "PractitionerRole" ],
+        "summary" : "Read the current state of the resource",
+        "operationId" : "readPractitionerRole",
+        "parameters" : [ {
+          "name" : "id",
+          "in" : "path",
+          "required" : true,
+          "schema" : {
+            "type" : "string"
+          }
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "Success",
+            "content" : {
+              "*/*" : {
+                "schema" : {
+                  "required" : [ "active", "code", "extension", "healthcareService", "id", "language", "location", "meta", "organization", "resourceType", "specialty", "text" ],
+                  "type" : "object",
+                  "properties" : {
+                    "specialty" : {
+                      "minItems" : 1,
+                      "uniqueItems" : true,
+                      "type" : "array",
+                      "items" : {
+                        "type" : "object",
+                        "properties" : {
+                          "coding" : {
+                            "minItems" : 1,
+                            "uniqueItems" : true,
+                            "type" : "array",
+                            "items" : {
+                              "required" : [ "code", "display", "system" ],
+                              "type" : "object",
+                              "properties" : {
+                                "code" : {
+                                  "minLength" : 1,
+                                  "type" : "string"
+                                },
+                                "system" : {
+                                  "minLength" : 1,
+                                  "type" : "string"
+                                },
+                                "display" : {
+                                  "minLength" : 1,
+                                  "type" : "string"
+                                }
+                              }
+                            }
+                          }
+                        }
+                      }
+                    },
+                    "extension" : {
+                      "minItems" : 1,
+                      "uniqueItems" : true,
+                      "type" : "array",
+                      "items" : {
+                        "required" : [ "url" ],
+                        "type" : "object",
+                        "properties" : {
+                          "valueReference" : {
+                            "required" : [ "reference" ],
+                            "type" : "object",
+                            "properties" : {
+                              "reference" : {
+                                "minLength" : 1,
+                                "type" : "string"
+                              }
+                            }
+                          },
+                          "url" : {
+                            "minLength" : 1,
+                            "type" : "string"
+                          }
+                        }
+                      }
+                    },
+                    "code" : {
+                      "minItems" : 1,
+                      "uniqueItems" : true,
+                      "type" : "array",
+                      "items" : {
+                        "type" : "object",
+                        "properties" : {
+                          "coding" : {
+                            "minItems" : 1,
+                            "uniqueItems" : true,
+                            "type" : "array",
+                            "items" : {
+                              "required" : [ "code", "system" ],
+                              "type" : "object",
+                              "properties" : {
+                                "code" : {
+                                  "minLength" : 1,
+                                  "type" : "string"
+                                },
+                                "system" : {
+                                  "minLength" : 1,
+                                  "type" : "string"
+                                }
+                              }
+                            }
+                          }
+                        }
+                      }
+                    },
+                    "healthcareService" : {
+                      "minItems" : 1,
+                      "uniqueItems" : true,
+                      "type" : "array",
+                      "items" : {
+                        "required" : [ "reference" ],
+                        "type" : "object",
+                        "properties" : {
+                          "reference" : {
+                            "minLength" : 1,
+                            "type" : "string"
+                          }
+                        }
+                      }
+                    },
+                    "meta" : {
+                      "required" : [ "lastUpdated", "profile" ],
+                      "type" : "object",
+                      "properties" : {
+                        "lastUpdated" : {
+                          "minLength" : 1,
+                          "type" : "string"
+                        },
+                        "profile" : {
+                          "type" : "array",
+                          "items" : {
+                            "type" : "object",
+                            "properties" : { }
+                          }
+                        }
+                      }
+                    },
+                    "organization" : {
+                      "required" : [ "reference" ],
+                      "type" : "object",
+                      "properties" : {
+                        "reference" : {
+                          "minLength" : 1,
+                          "type" : "string"
+                        }
+                      }
+                    },
+                    "active" : {
+                      "type" : "boolean"
+                    },
+                    "location" : {
+                      "minItems" : 1,
+                      "uniqueItems" : true,
+                      "type" : "array",
+                      "items" : {
+                        "required" : [ "reference" ],
+                        "type" : "object",
+                        "properties" : {
+                          "reference" : {
+                            "minLength" : 1,
+                            "type" : "string"
+                          }
+                        }
+                      }
+                    },
+                    "language" : {
+                      "minLength" : 1,
+                      "type" : "string"
+                    },
+                    "text" : {
+                      "required" : [ "div", "status" ],
+                      "type" : "object",
+                      "properties" : {
+                        "div" : {
+                          "minLength" : 1,
+                          "type" : "string"
+                        },
+                        "status" : {
+                          "minLength" : 1,
+                          "type" : "string"
+                        }
+                      }
+                    },
+                    "id" : {
+                      "minLength" : 1,
+                      "type" : "string"
+                    },
+                    "resourceType" : {
+                      "minLength" : 1,
+                      "type" : "string"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/Location/{id}" : {
+      "get" : {
+        "tags" : [ "Location" ],
+        "summary" : "Read the current state of the resource",
+        "operationId" : "readLocation",
+        "parameters" : [ {
+          "name" : "id",
+          "in" : "path",
+          "required" : true,
+          "schema" : {
+            "type" : "string"
+          }
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "Success",
+            "content" : {
+              "*/*" : {
+                "schema" : {
+                  "required" : [ "address", "extension", "hoursOfOperation", "id", "language", "managingOrganization", "meta", "name", "position", "resourceType", "status", "telecom", "text", "type" ],
+                  "type" : "object",
+                  "properties" : {
+                    "extension" : {
+                      "minItems" : 1,
+                      "uniqueItems" : true,
+                      "type" : "array",
+                      "items" : {
+                        "required" : [ "url" ],
+                        "type" : "object",
+                        "properties" : {
+                          "valueCodeableConcept" : {
+                            "required" : [ "coding" ],
+                            "type" : "object",
+                            "properties" : {
+                              "coding" : {
+                                "minItems" : 1,
+                                "uniqueItems" : true,
+                                "type" : "array",
+                                "items" : {
+                                  "required" : [ "code", "system" ],
+                                  "type" : "object",
+                                  "properties" : {
+                                    "code" : {
+                                      "minLength" : 1,
+                                      "type" : "string"
+                                    },
+                                    "system" : {
+                                      "minLength" : 1,
+                                      "type" : "string"
+                                    }
+                                  }
+                                }
+                              }
+                            }
+                          },
+                          "url" : {
+                            "minLength" : 1,
+                            "type" : "string"
+                          }
+                        }
+                      }
+                    },
+                    "address" : {
+                      "required" : [ "city", "line", "postalCode", "state" ],
+                      "type" : "object",
+                      "properties" : {
+                        "city" : {
+                          "minLength" : 1,
+                          "type" : "string"
+                        },
+                        "line" : {
+                          "type" : "array",
+                          "items" : {
+                            "type" : "object",
+                            "properties" : { }
+                          }
+                        },
+                        "postalCode" : {
+                          "minLength" : 1,
+                          "type" : "string"
+                  
